@@ -91,8 +91,8 @@ public:
         // Add to requested queue
         this->queues[priority].add(process);
 
-        std::cout << process.getPid() << std::endl;
-        std::cout << this->_currentTime << std::endl;
+        // std::cout << process.getPid() << std::endl;
+        // std::cout << this->_currentTime << std::endl;
 
         // And initialize its statistics (-1 is a workaround after the separation of main and scheduler)
         ProcessInfo info = { this->_currentTime, -this->_currentTime, -this->_currentTime, this->_currentTime > 0 ? -1 : 0 };
@@ -104,7 +104,7 @@ public:
 
         // Calculate average times
         for (auto info : this->processInfo) {
-            std::cout << info.second.waitingTime << std::endl;
+            // std::cout << info.second.waitingTime << std::endl;
             this->averages.responseTime += (float)info.second.responseTime / processesN;
             this->averages.turnaroundTime += (float)info.second.turnaroundTime / processesN;
             this->averages.waitingTime += (float)info.second.waitingTime / processesN;
