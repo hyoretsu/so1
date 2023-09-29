@@ -53,8 +53,6 @@ public:
 
     // Copy constructor
     Scheduler(const Scheduler& other) {
-        const int arrayLength = sizeof(other.queues) / sizeof(Queue);
-
         for (Queue queue : other.queues) {
             this->queues.push_back(queue);
         }
@@ -84,7 +82,7 @@ public:
     }
 
     void insert(Process& process, int priority) {
-        if (priority < 0 || priority >= queues.size()) {
+        if (priority < 0 || priority >= (int)queues.size()) {
             throw std::invalid_argument("Given priority is higher than the number of available queues.");
         }
 

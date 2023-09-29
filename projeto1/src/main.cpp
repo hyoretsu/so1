@@ -1,8 +1,5 @@
-#include <cmath>
-#include <cstdlib>
 #include <fstream>
 #include <iostream>
-#include <thread>
 #include <vector>
 
 #include "./classes/Scheduler.cpp"
@@ -59,12 +56,12 @@ int main(int argc, char* argv[]) {
         !schedulers.fcfs.finished() ||
         !schedulers.sjf.finished() ||
         !schedulers.rr.finished() ||
-        currentTime < processes.size()
+        currentTime < (int)processes.size()
         ) {
         // std::cout << currentTime << std::endl;
 
         // If there are still processes waiting to get queued, and there are some scheduled to arrive at this moment
-        if (processes.size() > currentTime && processes[currentTime].size() > 0) {
+        if ((int)processes.size() > currentTime && processes[currentTime].size() > 0) {
             // Get every process that arrived at the current time
             for (Process process : processes[currentTime]) {
                 // And add it to the schedulers

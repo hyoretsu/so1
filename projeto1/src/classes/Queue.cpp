@@ -19,11 +19,9 @@ private:
     int timeSinceSwitch = 0;
 
     void isAlgorithmSupported() {
-        if (std::any_of(supportedAlgorithms.begin(), supportedAlgorithms.end(), [this](std::string supportedAlgorithm) {return this->algorithm == supportedAlgorithm;})) {
-            return;
+        if (!std::any_of(supportedAlgorithms.begin(), supportedAlgorithms.end(), [this](std::string supportedAlgorithm) {return this->algorithm == supportedAlgorithm;})) {
+            throw std::invalid_argument(unsupportedAlgorithmMessage);
         }
-
-        throw std::invalid_argument(unsupportedAlgorithmMessage);
     }
 
     void removeProcess() {
