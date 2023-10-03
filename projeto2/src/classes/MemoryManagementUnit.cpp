@@ -85,13 +85,14 @@ private:
             int lastUsedPageIndex = 0;
             if (pagesUsed[lastUsedPageIndex] != 0) {
                 for (int i = 1; i < pagesN; i++) {
+                    // And quit as soon as there's an useless one
+                    if (pagesUsed[i] == 0) {
+                        lastUsedPageIndex = i;
+                        break;
+                    }
+
                     if (pagesUsed[i] > pagesUsed[lastUsedPageIndex]) {
                         lastUsedPageIndex = i;
-
-                        // And quit as soon as there's an useless one
-                        if (pagesUsed[i] == 0) {
-                            break;
-                        }
                     }
                 }
             }
